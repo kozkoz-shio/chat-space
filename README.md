@@ -1,16 +1,10 @@
 # README
 
 ## usersテーブル
-<!-- |Column|Type|Options|
-|------|----|-------|
-|name|string|null: false, unique: true|
-|email|string|null: false| -->
-
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
 |email|string|null: false|
-
 
 ### Association
 - has_many :messages
