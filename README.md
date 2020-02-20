@@ -14,7 +14,7 @@
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false, unique: true, foreign_key :true|
+|name|string|null: false, unique: true, foreign_key :true|
 
 ### Association
 - has_many :groups_users
@@ -28,17 +28,17 @@
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :groups
-- belongs_to :users
+- belongs_to :group
+- belongs_to :user
 
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|
-|image|string|
-|group_id|integer|
-|user_id|integer|
+|body|text||
+|image|string||
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belong_to :users
-- belong_to :groups
+- belongs_to :user
+- belongs_to :group
