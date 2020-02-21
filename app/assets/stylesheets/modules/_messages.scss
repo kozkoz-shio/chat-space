@@ -1,3 +1,54 @@
 * {
   box-sizing: border-box;
 }
+
+.wrapper{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  
+  .side-bar{
+    width: 300px;
+    float: left;
+
+    .side-hedder{
+      background-color:#253141;
+      height: 100px;
+      padding: 0 20px;
+      align-items: center;
+      display: flex;
+    }
+
+    .side-user-list{
+      background-color:#2f3e51;
+      height: calc(100vh - 100px);
+      padding: 20px 20px 0;
+    }
+  }
+
+  .chat-main{
+      width: calc(100vw - 300px);
+      float: left;
+
+
+    .group-info{
+      background-color: #ffffff;
+      border-bottom: solid 1px #eeeeee;
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .message-list{
+      background-color: #fafafa;
+      height: calc(100vh - 190px);
+    }
+
+
+    .massage-form{
+      background-color: #d2d2d2;
+      height: 90px;
+      width: 100%;
+    }
+  }
+}
