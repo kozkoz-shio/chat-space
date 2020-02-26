@@ -1,4 +1,37 @@
 .chat-main
   .group-info
+    .left-group-box
+      %p.left-group-box__current-group
+        lkoko
+
+      %ul.left-group-box__member-list
+        Member :  
+        %li.left-group-box__members
+          由紀
+
+    .right-edit-box
+      = link_to "#",class:'right-edit-box__btn' do
+        .right-edit-box__btn
+          Edit
+
   .message-list
-  .massage-form
+    .message 
+      .message__upper-info
+        %p.message__upper-info__talker
+          dd
+        %p.message__upper-info__date
+          ss
+      .message__text
+        Hello,world
+
+
+
+  .form
+    %form.new_message
+      .input-box
+        %input{type:"text", class: "input-box__text", placeholder: "type a message"}
+        %label{class: "input-box__image"}
+          = icon('fas','image')
+          %input{type: "file",class: "input-box__image__file"}
+      %input{type: "submit",class: "submit-btn"}
+      
