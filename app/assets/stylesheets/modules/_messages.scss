@@ -49,17 +49,23 @@
       background-color:$side-blue-light;
       height: calc(100vh - 100px);
       padding: 20px 20px 0px 20px;
+      overflow: scroll;
 
       .group{
-        text-decoration: none;
-        margin-bottom: 40px;
-        color: $white;
-        &__group-name{
-          font-size: 15px;
-          margin-bottom: 5px;
+        padding-bottom: 40px;
+        
+        a{
+          text-decoration: none;
+            color: $white;
+        
+            .group__name{
+              font-size: 15px;
+              margin-bottom: 5px;
+          }
+            .group__message{
+              font-size: 11px;
+          }
         }
-        &__group-new-massage{
-          font-size: 11px;
         }
       }
     }
@@ -181,4 +187,3 @@
         }
       }
   }
-}
