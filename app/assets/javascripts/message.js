@@ -1,9 +1,9 @@
 $(function(){
   
-      function buildHTML(message){
-        if ( message.image ) {
+  var buildHTML = function(message){
+        if (message.content && message.image) {
           var html =
-          `<div class="message">
+          `<div class="message"　data-message-id =${message.id}>
             <div class="message__upper-info">
               <div class="upper-info__talker">
                 ${message.user_name}
@@ -20,9 +20,10 @@ $(function(){
             <img src=${message.image} >
           </div>`
           return html;
-        } else {
+
+        } else if  (message.content){
           var html =
-          `<div class="message">
+          `<div class="message" data-message-id =${message.id}>
             <div class="message__upper-info">
               <div class="upper-info__talker">
                 ${message.user_name}
@@ -38,24 +39,24 @@ $(function(){
             </div>
           </div>`
         return html;
-      };
-    }
 
-    var reloadMessages = function() {
-      var last_message_id = $('.message:last').data("message-id");
-      $.ajax({
-        url: "api/messages",
-        type: 'get',
-        dataType: 'json',
-        data: {id: last_message_id}
-      })
-      .done(function(messages) {
-        console.log('success');
-      })
-      .fail(function() {
-        alert('自動更新に失敗しました');
-      });
+      } else if  (message.image){
+        var html =
+        `<div class="message" data-message-id =${message.id}>
+          <div class="message__upper-info">
+            <div class="upper-info__talker">
+              ${message.user_name}
+            </div>
+            <div class="message__upper-info__date">
+              ${message.created_at}
+            </div>
+          </div>
+          <img src=${message.image} >
+        </div>`
+      return html;
     };
+  }
+
 
 
   $('#new_message').on('submit', function(e){
@@ -84,4 +85,32 @@ $(function(){
       $('.form__submit').prop('disabled', false);
     });
   });
+
+  var reloadMessages = function() {
+    var last_message_id = $('.message:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.message-list').append(insertHTML);
+      $('.message-list').animate({scrollTop: $('.message-list')[0].scrollHeight}, 'fast'); 
+    　}
+    })
+    
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
+  };
+
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+    setInterval(reloadMessages, 7000);
+  }
 });
