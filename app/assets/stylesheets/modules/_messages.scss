@@ -120,6 +120,8 @@
       background-color: #fafafa;
       height: calc(100vh - 190px);
       padding: 46px 40px ;
+      overflow: scroll;
+      overflow: hidden visible;
 
       .message{
         padding-bottom: 46px;
@@ -149,7 +151,10 @@
     .form {
       background-color:#d2d2d2;
       height: 90px;
+      width: calc(100vw - 300px);
       padding: 20px 40px 20px 50px;
+      position: fixed;
+      bottom: 0;
       &__message {
         border: none;
         float: left;
