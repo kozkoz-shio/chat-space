@@ -1,4 +1,5 @@
 $(function(){
+  
       function buildHTML(message){
         if ( message.image ) {
           var html =
@@ -39,6 +40,24 @@ $(function(){
         return html;
       };
     }
+
+    var reloadMessages = function() {
+      var last_message_id = $('.message:last').data("message-id");
+      $.ajax({
+        url: "api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
+      .done(function(messages) {
+        console.log('success');
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      });
+    };
+
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
