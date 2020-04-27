@@ -1,5 +1,18 @@
 # README
 
+## オンラインチャットアプリ
+主要機能
+* テキスト、画像投稿機能
+*  グループ作成、チャット機能
+
+
+
+##  開発環境
+* Ruby
+* Javascripts
+* VScode
+
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
